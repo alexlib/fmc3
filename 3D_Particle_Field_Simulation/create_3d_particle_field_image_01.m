@@ -7,10 +7,10 @@ function create_3d_particle_field_image_01;
 % function creates the 3D intensity field.
 
 % This is the number of particles to simulate
-particle_number = 1000;
+particle_number = 50;
 
 % This is the directory in which to save the 3D particle field image
-directory_write = '~/Desktop/test_fields';
+directory_write = '../Data/test_fields';
 
 % This creates the intensity field paramaters data structure
 intensity_field_parameters = create_intensity_field_parameters;

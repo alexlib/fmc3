@@ -1,0 +1,17 @@
+3D FMC Task List
+
+1) Synthetic image generation codes:
+
+	- 3D Coordinate transforms for MC analysis
+	- Wrapper code for Rod's code
+	- Parameters generator
+	
+2) Processing
+	- Spherical resampling
+	- Spherical projection
+	- SO(3)FT
+	- Rotation calculation
+	- 3D alignment transformation
+	- Mellin transform
+	
+3) Write for GPU?
