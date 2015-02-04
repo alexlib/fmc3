@@ -23,14 +23,14 @@ function WINDOW = gaussianWindowFilter_3D(DIMENSIONS, WINDOWSIZE, WINDOWTYPE)
 % SEE ALSO
 %   findwidth
 
-% Bug out if fewer than 3 dimensions were specified
-if numel(DIMENSIONS) < 3
+% Bug out if not 3 dimensions were specified
+if numel(DIMENSIONS) ~= 3
     error([sprintf('Error in gaussianWindowFilter_3D:\n'), ...
            sprintf('The "DIMENSIONS" argument must contain three elements.')]); 
 end
 
-% Bug out if fewer than 3 dimensions were specified
-if numel(WINDOWSIZE) < 3
+% Bug out if not 3 dimensions were specified
+if numel(WINDOWSIZE) ~= 3
     error([sprintf('Error in gaussianWindowFilter_3D:\n'), ...
            sprintf('The "WINDOWSIZE" argument must contain three elements.')]); 
 end

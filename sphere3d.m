@@ -517,9 +517,14 @@ case 'surf'
     axis off;
     grid off;
     set(gca,'XDir','rev','YDir','rev');
-    cbar = colorbar;
-    numYTicks = length(get(cbar,'YTickLabel'));
+%     cbar = colorbar;
+%     numYTicks = length(get(cbar,'YTickLabel'));
+    
+    
+    % Matt Giarra hard coded this number
+    numYTicks = 7;
     gap = (MaxZin - MinZin)/(numYTicks-1);
+
     k = 0:numYTicks-1;
     if gap < 5
         minLabel = round(MinZin*100)/100;
@@ -528,7 +533,7 @@ case 'surf'
         minLabel = round(MinZin);
         stepLabel = k.*round(gap) + minLabel;
     end    
-    colorbar('YTickLabel',stepLabel); 
+%     colorbar('YTickLabel',stepLabel); 
     
 case 'contour' 
     C = contourc(T',25);
@@ -590,7 +595,7 @@ case 'contour'
     minZ = min(min(Zin));
     caxis([minZ, maxZ]);
     caxis manual
-    colorbar
+%     colorbar
     [r,c] = size(Xsph);
     for i = 1:nLevel-1
         xx(1:r) = Xsph(:,i);

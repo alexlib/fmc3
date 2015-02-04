@@ -28,11 +28,11 @@ function [DATA_SPHERICAL_3D, X_SPH, Y_SPH, Z_SPH] = ...
 % This creates a grid of spherical coordinates
 % on which the volumetric Cartesian data will be resampled.
 % "azimuth_vector" is the azimuthal angular coordinate in radians.
-azimuth_vector = linspace(0, 2*pi, NUM_AZIMUTH_SAMPLES);
+azimuth_vector = linspace(-pi, pi, NUM_AZIMUTH_SAMPLES);
 
 % This is the elevation angular coordinate in radians
 % (the word "elevation" is reserved by Matlab)
-elevation_vector = linspace(-pi, pi, NUM_ELEVATION_SAMPLES);
+elevation_vector = linspace(-pi/2, pi/2, NUM_ELEVATION_SAMPLES);
 
 % Default to a max radius of the largest circle that
 % can be inscribed on the volumetric data.
