@@ -1,4 +1,4 @@
-function [DATA_SPHERICAL_3D, X_SPH, Y_SPH, Z_SPH] = ...
+function [DATA_SPHERICAL_3D, AZ, EL, R] = ...
     cart3_to_sph3(DATA_CARTESIAN_3D,...
     NUM_AZIMUTH_SAMPLES, NUM_ELEVATION_SAMPLES, NUM_RADIAL_SAMPLES,...
     X_CENTER, Y_CENTER, Z_CENTER, R_MIN, R_MAX)
@@ -46,15 +46,15 @@ radial_vector = linspace(R_MIN, R_MAX, NUM_RADIAL_SAMPLES);
 % Create a 3D grid of spherical coordinates from
 % the[az, el, r] coordinate vectors.
 % This should be moved out of this function for speed.
-[az, el, r] = meshgrid(azimuth_vector, elevation_vector, radial_vector);
+[AZ, EL, R] = meshgrid(azimuth_vector, elevation_vector, radial_vector);
 
 % Convert the 3D spherical coordinates to 3D cartesian coordinates
-[X_SPH, Y_SPH, Z_SPH] = sph2cart(az, el, r);
+[x_sph, y_sph, z_sph] = sph2cart(AZ, EL, R);
 
 % Resample the 3D Cartesian data onto the spherical coordinate grid
 DATA_SPHERICAL_3D = interp3(x_cart, y_cart, z_cart,...
                             DATA_CARTESIAN_3D, ...
-                            X_SPH, Y_SPH, Z_SPH);
+                            x_sph, y_sph, z_sph);
 
 end
 

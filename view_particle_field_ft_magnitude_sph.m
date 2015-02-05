@@ -3,10 +3,10 @@
 addpath vol3d;
 
 % Directory containing the field data
-field_dir = fullfile('~/Desktop');
+field_dir = fullfile('/Users/matthewgiarra/Documents/School/VT/Research/Aether/fmc3/analysis/data/synthetic/lin/2015-02-02_volume_test_lin/64x64/raw/lin_h64_w64_00001/raw/');
 
 % File name of field data
-data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000060';
+data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000025';
 
 % Path to the data file
 data_file_path = fullfile(field_dir, data_file_name);
@@ -42,8 +42,8 @@ ca = [1.0038,...
 
 for k = 1 : nImages
     fprintf(1, '%d of %d\n', k, nImages);
-    close all
-    figure('visible', 'off');
+%     close all
+%     figure('visible', 'off');
     
     ax1 = subplot(1, 2, 1);
     vol3d('cdata', g.*I(:, :, :, k), 'texture', '3D');
@@ -105,8 +105,8 @@ for k = 1 : nImages
     zoom(1.6);
     
     drawnow;
-    print(1, '-djpeg', fullfile('~/Desktop/plots_02/sph',...
-        ['plot_' num2str(k, '%04d') '.jpg']));
+%     print(1, '-djpeg', fullfile('~/Desktop/plots_02/sph',...
+%         ['plot_' num2str(k, '%04d') '.jpg']));
   
 
 end
