@@ -21,9 +21,6 @@ FT = log(abs(fftshift(fftn(VOLUME, [height, width, depth]))));
 % Open a file for writing                     
 fid = fopen(FILEPATH, 'w');
 
-% Make some cartesian coordinates
-[x, y, z] = sph2cart(az, el, ones(size(el)));
-
 % Loop over the whole array, writing out 
 % each value on a separate line. The function 
 % spherical_projection orders the spherial projection
@@ -34,13 +31,7 @@ fid = fopen(FILEPATH, 'w');
 % different elevation angles.
 for e = 1 : length(el) 
     for a = 1 : length(az)
-        plot3(x, y, z, '.k'); axis image;
-        hold on
-        plot3(x(a, e), y(a, e), z(a, e), 'or', 'markerfacecolor', 'red');
-        axis image;
-        hold off
-        pause(0.01);
-%        fprintf(fid, '%f\n%d\n', data_sph(a, e), 0); 
+       fprintf(fid, '%f\n%d\n', data_sph(a, e), 0); 
     end
 end
     
