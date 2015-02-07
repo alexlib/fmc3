@@ -1,6 +1,6 @@
 
 % Specify file path to volumes
-file_path = '/Users/matthewgiarra/Documents/School/VT/Research/Aether/fmc3/analysis/data/synthetic/lin/2015-02-02_volume_test_lin/64x64/raw/lin_h64_w64_00001/raw/raw_image_matrix_lin_h64_w64_seg_000001_000010.mat';
+file_path = '/Users/matthewgiarra/Documents/School/VT/Research/Aether/fmc3/analysis/data/synthetic/lin/2015-02-02_volume_test_lin/64x64/raw/lin_h64_w64_00001/raw/raw_image_matrix_lin_h64_w64_seg_000001_000025.mat';
 
 % Directory containing the compiled SOFT routines.
 soft_dir = '~/Desktop/soft_test';
@@ -32,8 +32,8 @@ file_path_01 = fullfile(soft_dir, 'input_data_01.dat');
 file_path_02 = fullfile(soft_dir, 'input_data_02.dat');
 
 % Write the .dat files
-write_volume_sph_proj(volume_01, band_width, file_path_01);
-write_volume_sph_proj(volume_02, band_width, file_path_02);
+write_volume_sph_proj_temp(volume_01, band_width, file_path_01);
+write_volume_sph_proj_temp(volume_02, band_width, file_path_02);
 
 % Build command for running C code
 function_name = 'test_soft_fftw_correlate2';

@@ -85,7 +85,7 @@ radial_vector = linspace(R_MIN, r_max, num_radial_samples);
 % Create a 3D grid of spherical coordinates from
 % the[az, el, r] coordinate vectors.
 % This should be moved out of this function for speed.
-[AZ, EL, R] = meshgrid(az_vector, el_vector, radial_vector);
+[EL, AZ, R] = meshgrid(el_vector, az_vector, radial_vector);
 
 % Convert the 3D spherical coordinates to 3D cartesian coordinates
 [x_sph, y_sph, z_sph] = sph2cart(AZ, EL, R);
