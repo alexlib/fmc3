@@ -6,7 +6,7 @@ function STD_DEV = findGaussianWidth(REGION_LENGTH, EFFECTIVE_LENGTH, AREA_ERROR
 % John says that the volume under a this Gaussian window will not be
 % exactly the volume under the square window. Check into this.
 % 
-% INPUTS
+% INPUTS  
 %      REGION_LENGTH = Length of the domain in pixels
 %
 %      EFFECTIVE_LENGTH = Effective window resolution in pixels
