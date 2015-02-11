@@ -48,7 +48,7 @@ fid = fopen(RESULTS_FILE_PATH, 'r');
 
 % Create a grid of the azimuthal and elevation coordinates
 % based on the band width of the output file
-[ALPHA, GAMMA, BETA] = make_spherical_coordinates_3D(BAND_WIDTH);
+[ALPHA, GAMMA, BETA] = make_euler_angle_grid_3D(BAND_WIDTH);
 
 % Number of azimuth and elevation samples
 num_alpha_samples = 2 * BAND_WIDTH;

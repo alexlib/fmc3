@@ -1,6 +1,6 @@
 
 % Specify file path to volumes
-file_path = '~/Desktop/raw_image_matrix_lin_h64_w64_seg_000001_000025.mat';
+file_path = '~/Desktop/raw_image_matrix_lin_h64_w64_seg_02_000001_000025.mat';
 
 % Directory containing the compiled SOFT routines.
 soft_dir = '~/Desktop/soft_test';
@@ -32,12 +32,12 @@ file_path_01 = fullfile(soft_dir, 'input_data_01.dat');
 file_path_02 = fullfile(soft_dir, 'input_data_02.dat');
 
 % Write the .dat files
-% write_volume_sph_proj(volume_01, band_width, file_path_01);
-% write_volume_sph_proj(volume_02, band_width, file_path_02);
+write_volume_sph_proj(volume_01, band_width, file_path_01);
+write_volume_sph_proj(volume_02, band_width, file_path_02);
 
 % Write the .dat files
-write_ft_mag_sph_proj(volume_01, band_width, file_path_01);
-write_ft_mag_sph_proj(volume_02, band_width, file_path_02);
+% write_ft_mag_sph_proj(g .* volume_01, band_width, file_path_01);
+% write_ft_mag_sph_proj(g .* volume_02, band_width, file_path_02);
 
 
 
