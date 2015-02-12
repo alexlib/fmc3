@@ -6,7 +6,7 @@ addpath vol3d;
 field_dir = fullfile('~/Desktop');
 
 % File name of field data
-data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000025';
+data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100';
 
 % Path to the data file
 data_file_path = fullfile(field_dir, data_file_name);
@@ -25,17 +25,28 @@ nImages = size(I, 4);
 % Color limits for FT magnitude
 ca = [4 17];
 
-% axis_colors = 0 * [1, 1, 1];
+axis_colors = 0.6 * [1, 1, 1];
 
 for k = 1 : nImages
     fprintf(1, '%d of %d\n', k, nImages);
     close all
-    figure('visible', 'off');
+%     figure('visible', 'off');
     
     ax1 = subplot(1, 2, 1);
     vol3d('cdata', g.*I(:, :, :, k), 'texture', '3D');
+    grid on
+    set(gca, 'xtick', linspace(1, 64, 5));
+    set(gca, 'ytick', linspace(1, 64, 5));
+    set(gca, 'ztick', linspace(1, 64, 5));
+    set(gca, 'xticklabel', {});
+    set(gca, 'yticklabel', {});
+    set(gca, 'zticklabel', {});
     set(gca, 'color', 'black');
+    set(gca, 'xcolor', axis_colors);
+    set(gca, 'ycolor', axis_colors);
+    set(gca, 'zcolor', axis_colors);
     alphamap('rampup');
+    box on
     colormap hot
     caxis(1E4 * [0 3.0]);
     xlim([1 64]);
@@ -65,6 +76,7 @@ for k = 1 : nImages
     
     % Create a volume visualization of the data.
     vol3d('cdata', ft_mag, 'texture', '3D');
+    set(gca, 'ALim', [2 20]);
     caxis(ca);
     view(3);
 %     colormap('gray');
@@ -72,7 +84,7 @@ for k = 1 : nImages
     xlim([1 64]);
     ylim([1 64]);
     zlim([1 64]);
-    colormap(map);
+    colormap(cmap);
 %     colormap hot;
     % set(gca, 'color', 'white');
     axis image
@@ -82,8 +94,23 @@ for k = 1 : nImages
     xlabel('U');
     ylabel('V');
     zlabel('W');
+    
+    set(gca, 'xtick', linspace(1, 64, 5));
+    set(gca, 'ytick', linspace(1, 64, 5));
+    set(gca, 'ztick', linspace(1, 64, 5));
+    set(gca, 'xticklabel', {});
+    set(gca, 'yticklabel', {});
+    set(gca, 'zticklabel', {});
+    set(gca, 'xcolor', axis_colors);
+    set(gca, 'ycolor', axis_colors);
+    set(gca, 'zcolor', axis_colors);
+    set(gca, 'color', 'black');
+    grid on;
+    
+    set(gcf, 'color', 'black');
     set(gcf, 'invertHardcopy', 'off');
-    drawnow;
+    
+%     drawnow;
     print(1, '-djpeg', fullfile('~/Desktop/plots_02',...
         ['plot_' num2str(k, '%04d') '.jpg']));
   

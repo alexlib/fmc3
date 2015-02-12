@@ -1,4 +1,4 @@
-function plot_soft_correlation(CORRELATION_VALUES)
+function plot_soft_correlation(CORRELATION_VALUES, PARAMS)
 
 % Axis color
 axis_color = 0.6 * [1, 1, 1];
@@ -7,7 +7,9 @@ axis_color = 0.6 * [1, 1, 1];
 figure_color = 0.15 * [1, 1, 1];
 
 % Font size
-fSize = 16;
+axis_font_size = 12;
+label_font_size = 18;
+
 
 % Size of the data
 [height, width, depth] = size(CORRELATION_VALUES);
@@ -21,7 +23,7 @@ fSize = 16;
 % Ranges of axes
 x_range = 2 * [0, 1];
 y_range = 2 * [0, 1];
-z_range = 1 / 2 * [-1, 1];
+z_range = 1 * [0, 1];
       
 % Create the plot
 h = vol3d('cdata', CORRELATION_VALUES, 'texture', '3D',...
@@ -43,7 +45,7 @@ set(gca, 'ycolor', axis_color);
 set(gca, 'zcolor', axis_color);
 
 % Set axis font size
-set(gca, 'FontSize', fSize);
+set(gca, 'FontSize', axis_font_size);
 
 % % Set the camera position
 % set(gca, 'CameraPosition', ...
@@ -51,25 +53,29 @@ set(gca, 'FontSize', fSize);
 
 % Set the camera position
 set(gca, 'CameraPosition', ...
-    [14.4639, -9.4307, 1.5752]);
+    [9.7442,  -13.4189, 2.4770]);
 
 % Turn on box
 box on;
 
 % % Set number of ticks
-% n_ticks_x = 5;
-% n_ticks_y = 5;
-% n_ticks_z = 5;
+n_ticks_x = 5;
+n_ticks_y = 5;
+n_ticks_z = 5;
+
+x_tick_vect = linspace(min(x_range), max(x_range), n_ticks_x);
+y_tick_vect = linspace(min(y_range), max(y_range), n_ticks_y);
+z_tick_vect = linspace(min(z_range), max(z_range), n_ticks_z);
 
 % % Set tick marks
-% set(gca, 'xtick', linspace(min(x_range), max(x_range), n_ticks_x));
-% set(gca, 'ytick', linspace(min(y_range), max(y_range), n_ticks_y));
-% set(gca, 'ztick', linspace(min(z_range), max(z_range), n_ticks_z));
+set(gca, 'xtick', x_tick_vect);
+set(gca, 'ytick', y_tick_vect);
+set(gca, 'ztick', z_tick_vect);
 
 % Label axes
-xlabel('\gamma / \pi', 'Interpreter', 'tex', 'FontSize', 30);
-ylabel('\alpha / \pi', 'Interpreter', 'tex', 'FontSize', 30);
-zlabel('\beta / \pi' , 'Interpreter', 'tex', 'FontSize', 30);
+xlabel('\gamma / \pi', 'Interpreter', 'tex', 'FontSize', label_font_size);
+ylabel('\alpha / \pi', 'Interpreter', 'tex', 'FontSize', label_font_size);
+zlabel('\beta / \pi' , 'Interpreter', 'tex', 'FontSize', label_font_size);
 
 
 end

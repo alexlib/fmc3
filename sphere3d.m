@@ -517,6 +517,7 @@ case 'surf'
     axis off;
     grid off;
     set(gca,'XDir','rev','YDir','rev');
+    
 %     cbar = colorbar;
 %     numYTicks = length(get(cbar,'YTickLabel'));
     

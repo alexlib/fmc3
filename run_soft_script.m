@@ -5,11 +5,10 @@ base_dir = '/Users/matthewgiarra/Desktop/soft_test';
 this_dir = pwd;
 
 % Data type
-data_type = 'volumes_02';
+data_type = 'vol';
 
-data_dir = fullfile(base_dir, 'data_files', data_type, 'raw');
+data_dir = fullfile(base_dir, 'data_files', data_type, 'dat');
 output_dir = fullfile(base_dir, 'data_files', data_type, 'corr');
-
 
 fun_name = 'test_soft_fftw_correlate2';
 fun_path = fullfile(base_dir, fun_name);
@@ -24,13 +23,13 @@ start_file = 1;
 end_file = 100;
 skip_file = 1;
 
-file_base = 'input_data_vol_';
+file_base = ['input_data_' data_type '_'];
 file_ext = '.dat';
 n_digits = 3;
 num_format = ['%0' num2str(n_digits) 'd'];
 
 % Output file base
-output_file_base = 'vol_corr_';
+output_file_base = [data_type '_corr_'];
 
 % Make the output dir if it doesn't exist
 if ~exist(output_dir, 'dir');
