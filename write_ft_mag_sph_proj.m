@@ -8,6 +8,7 @@ function write_ft_mag_sph_proj(VOLUME, BAND_WIDTH, FILEPATH)
 % with longitude iterating faster than colatitude,
 % e.g., a sampling of all the longitudes at each colatitude.
 % 
+%
 
 % Measure the dimensions of the volume
 [height, width, depth] = size(VOLUME);
