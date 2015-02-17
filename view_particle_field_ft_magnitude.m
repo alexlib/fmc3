@@ -6,13 +6,13 @@ addpath vol3d;
 field_dir = fullfile('~/Desktop');
 
 % File name of field data
-data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100';
+% data_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100';
 
 % Path to the data file
-data_file_path = fullfile(field_dir, data_file_name);
+% data_file_path = fullfile(field_dir, data_file_name);
 
 % Load the data file
-load(data_file_path);
+% load(data_file_path);
 
 I = double(imageMatrix1);
 
@@ -27,7 +27,7 @@ ca = [4 17];
 
 axis_colors = 0.6 * [1, 1, 1];
 
-for k = 1 : nImages
+for k = 1 : 1
     fprintf(1, '%d of %d\n', k, nImages);
     close all
 %     figure('visible', 'off');
@@ -111,8 +111,8 @@ for k = 1 : nImages
     set(gcf, 'invertHardcopy', 'off');
     
 %     drawnow;
-    print(1, '-djpeg', fullfile('~/Desktop/plots_02',...
-        ['plot_' num2str(k, '%04d') '.jpg']));
+%     print(1, '-djpeg', fullfile('~/Desktop/plots_02',...
+%         ['plot_' num2str(k, '%04d') '.jpg']));
   
 
 end

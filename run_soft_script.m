@@ -20,7 +20,7 @@ band_width_out = 32;
 max_order = 7;
 
 start_file = 1;
-end_file = 100;
+end_file = 64;
 skip_file = 1;
 
 file_base = ['input_data_' data_type '_'];

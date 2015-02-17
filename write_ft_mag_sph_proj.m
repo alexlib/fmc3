@@ -14,11 +14,15 @@ function write_ft_mag_sph_proj(VOLUME, BAND_WIDTH, FILEPATH)
 [height, width, depth] = size(VOLUME);
 
 % Take the magnitude of the 3D FT of the data
-FT = log(abs(fftshift(fftn(VOLUME, [height, width, depth]))));
+FT = (abs(fftshift(fftn(VOLUME, [height, width, depth]))));
 
 % Resample the FT magnitude onto the unit sphere.
 [data_sph, az, el] = spherical_projection(FT, BAND_WIDTH);
                      
+imagesc(data_sph);
+axis image;
+pause(0.1);
+
 % Open a file for writing                     
 fid = fopen(FILEPATH, 'w');
 

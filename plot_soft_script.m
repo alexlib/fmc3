@@ -41,7 +41,7 @@ n_digits = 3;
 num_format = ['%0' num2str(n_digits) 'd'];
 
 % Correlation file base
-corr_file_base = 'vol_corr_';
+corr_file_base = [data_type '_corr_'];
 
 % Volume file base
 mat_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100.mat';
@@ -102,7 +102,7 @@ z_points = [zo, zo;
 cla;
 
 % Loop over all the files
-for k = 1 : 1 : num_files
+for k = 25 : 1 : 25
     
     % Measure rotation angle in radians
     R = -1 * Parameters.Rotation(k, 2);
@@ -120,7 +120,7 @@ for k = 1 : 1 : num_files
     plot_file_path = fullfile(plot_dir, plot_file_name);
 
     % Read the SOFT results .dat file
-    C = read_soft_results_file(corr_file_path, band_width_out, is_real);
+    [C, G, B, A] = read_soft_results_file(corr_file_path, band_width_out, is_real);
     
     % Plot the first volume
     a1 = subplot(1, 2, 1);
@@ -182,9 +182,10 @@ for k = 1 : 1 : num_files
     
     set(gcf, 'inverthardcopy', 'off');
     
-    print(1, '-dpng', '-r300', plot_file_path);
-    axes(a1); cla;
-    axes(a2); cla;
+%     print(1, '-dpng', '-r300', plot_file_path);
+%     pause(1);
+%     axes(a1); cla;
+%     axes(a2); cla;
     
 end
 

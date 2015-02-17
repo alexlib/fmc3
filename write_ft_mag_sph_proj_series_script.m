@@ -1,6 +1,6 @@
 data_rep = '~/Desktop/soft_test/data_files';
 
-data_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100.mat';
+data_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000064.mat';
 
 data_type = 'vol';
 
@@ -37,8 +37,11 @@ g = gaussianWindowFilter_3D([height, width, depth], ...
     0.63 * [1, 1, 1], 'fraction');
 
 
-for k = 1 : num_images
-   output_file_name = ['input_data_vol_' num2str(k, '%03d') '.dat'];
+parfor k = 1 : num_images
+    
+   fprintf(1, 'Image %d of %d\n', k, num_images); 
+    
+   output_file_name = ['input_data_' data_type '_' num2str(k, '%03d') '.dat'];
    output_file_path = fullfile(output_dir, output_file_name); 
    vol = double(imageMatrix1(:, :, :, k));
    

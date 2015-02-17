@@ -15,7 +15,7 @@ end
 
 % Sum the spherical data along the radial direction 
 % to create its spherical projection.
-DATA_SPHERICAL_2D = sum(DATA_SPHERICAL_3D, 3);
+DATA_SPHERICAL_2D = (sum(DATA_SPHERICAL_3D, 3));
 
 % Remove the radial index from the azimuth and
 % elevation coordinate arrays.
