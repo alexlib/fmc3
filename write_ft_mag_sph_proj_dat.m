@@ -1,4 +1,4 @@
-function write_ft_mag_sph_proj(VOLUME, BAND_WIDTH, WINDOW, FILEPATH)
+function write_ft_mag_sph_proj_dat(VOLUME, BAND_WIDTH, WINDOW, FILEPATH)
 % This function computes the spherical projection of the 
 % FT magnitude of the 3D volume VOLUME and writes its
 % values to a .dat file located along FILEPATH.

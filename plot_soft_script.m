@@ -17,7 +17,7 @@ base_dir = '/Users/matthewgiarra/Desktop/soft_test';
 is_real = 1;
 
 % Data type
-data_type = 'vol';
+data_type = 'ft_mag';
 
 mat_dir    = fullfile(base_dir, 'data_files', data_type, 'mat');
 data_dir   = fullfile(base_dir, 'data_files', data_type, 'dat');   

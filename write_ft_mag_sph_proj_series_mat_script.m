@@ -7,7 +7,7 @@ data_type = 'ft_mag';
 mat_dir = fullfile(data_rep, data_type, 'mat');
 
 % Directory containing the compiled SOFT routines.
-output_dir = fullfile(data_rep, data_type, 'dat');
+output_dir = fullfile(data_rep, data_type, 'mat');
 
 % Bandwidth of the data
 band_width = 64;
@@ -53,22 +53,43 @@ rc = round(min([width, depth, height])/6);
 % g2 = gaussianWindowFilter_3D([height, width, depth], ...
 %     0.5 * [1, 1, 1], 'fraction');
 
+% This is a low-pass filter applied to the 3D Cartesian FT.
 window_02 = double(r < rc);
 
+% This is the name and path to the output file
+output_file_name = ['spherical_projection_' data_type '_bw' num2str(band_width) '.mat'];
+output_file_path = fullfile(output_dir, output_file_name);
+
+% Initialize the spherical data
+spherical_data = zeros(4 * band_width^2, num_images, 'double');
 
 for k = 1 : 1 : num_images
     
+   % Inform the user
    fprintf(1, 'Image %d of %d\n', k, num_images); 
-    
-   output_file_name = ['input_data_' data_type '_' num2str(k, '%03d') '.dat'];
-   output_file_path = fullfile(output_dir, output_file_name); 
+   
+   % Extract the volume
    vol = double(imageMatrix1(:, :, :, k));
    
+   % Raw volume projections
    if isVol
-       write_volume_sph_proj(vol, band_width, output_file_path);
-   else  
-       write_ft_mag_sph_proj(g .* vol, band_width, window_02, output_file_path);
+       spherical_data_matrix = spherical_projection(vol, band_width);
+       
+   % FT Magnitude projections    
+   else
+       spherical_data_matrix = ft_mag_sph_proj(g .* vol, band_width, window_02);
    end
    
-
+   % Reform the spherical data matrix into a vector and write it to the
+   % output data matrix.
+   spherical_data(:, k) = spherical_data_matrix(:);
+   
 end
+
+% Save the spherical data projections as a single matrix.
+save(output_file_path, 'spherical_data');
+
+
+
+
+

@@ -5,7 +5,7 @@ base_dir = '/Users/matthewgiarra/Desktop/soft_test';
 this_dir = pwd;
 
 % Data type
-data_type = 'vol';
+data_type = 'ft_mag';
 
 data_dir = fullfile(base_dir, 'data_files', data_type, 'dat');
 output_dir = fullfile(base_dir, 'data_files', data_type, 'corr');

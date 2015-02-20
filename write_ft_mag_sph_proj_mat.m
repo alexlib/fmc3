@@ -1,4 +1,4 @@
-function write_ft_mag_sph_proj(VOLUME, BAND_WIDTH, WINDOW, FILEPATH)
+function write_ft_mag_sph_proj_mat(VOLUME, BAND_WIDTH, WINDOW, FILEPATH)
 % This function computes the spherical projection of the 
 % FT magnitude of the 3D volume VOLUME and writes its
 % values to a .dat file located along FILEPATH.
@@ -7,7 +7,6 @@ function write_ft_mag_sph_proj(VOLUME, BAND_WIDTH, WINDOW, FILEPATH)
 % The entire array is written as a single column vector
 % with longitude iterating faster than colatitude,
 % e.g., a sampling of all the longitudes at each colatitude.
-% 
 
 
 % Resample the FT magnitude onto the unit sphere.

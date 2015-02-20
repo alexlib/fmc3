@@ -28,8 +28,11 @@ parameters_dir = fullfile(base_dir, 'data_files',  data_type, 'parameters');
 band_width_in  = 64;
 band_width_out = 32;
 
+% Max order of transforms
+max_order = 7;
+
 start_file = 1;
-end_file = 64;
+end_file = 100;
 skip_file = 1;
 
 file_base = ['input_data_' data_type '_'];
@@ -41,13 +44,13 @@ num_format = ['%0' num2str(n_digits) 'd'];
 corr_file_base = [data_type '_corr_'];
 
 % Volume file base
-mat_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000064.mat';
+mat_file_name = 'raw_image_matrix_lin_h64_w64_seg_000001_000100.mat';
 
 % Volume file path
 mat_file_path = fullfile(mat_dir, mat_file_name);
 
 % Parameters file name
-parameters_file_name = 'imageParameters_lin_h64_w64_seg_000001_000064.mat';
+parameters_file_name = 'imageParameters_lin_h64_w64_seg_000001_000100.mat';
 
 % Parameters file path
 parameters_file_path = fullfile(parameters_dir, parameters_file_name);
@@ -69,56 +72,53 @@ file_nums = start_file : skip_file : end_file;
 
 % Number of files
 num_files = length(file_nums);
-   
-% Allocate rotation measurement vector
-b_est = zeros(num_files, 1);
 
-% Allocate rotation error vector
-b_err = zeros(num_files, 1);
+% Close any open figures
+close all
 
-% minimum error due to indexing
-j = 0 : 2 * band_width_out - 1;
-b_coordinate = (pi * (2 * j + 1) / (4 * band_width_out))';
-b_min = min(b_coordinate);
+xo = 32;
+yo = 32;
+zo = 32;
 
-% Angular coordinates
-[G, A, B] = meshgrid(linspace(0, 2*pi, 64), linspace(0, 2*pi, 64), linspace(0, pi, 64));
+dx = 12;
+dy = 12;
+dz = 12;
 
-% max indices
-I = zeros(num_files, 1);
+% Fixed axis points
+x_points = [xo, xo + dx
+            xo, xo; 
+            xo, xo];
 
-file_num_01 = file_nums(1);
+y_points = [yo, yo; 
+            yo, yo + dy; 
+            yo, yo];
+
+z_points = [zo, zo;
+            zo, zo;
+            zo, zo + dz];
+
+    
+% Clear axes
+cla;
 
 % Loop over all the files
-parfor k = 1 : num_files
-    % Inform user
-    fprintf('On file %d of %d \n', k, num_files);
+for k = 25 : 1 : 25
     
     % Measure rotation angle in radians
-    R = -1 * Parameters.Rotation(file_nums(k), 1);
+    R = -1 * Parameters.Rotation(k, 2);
     
     % Correlation file name and path
     corr_file_name = [corr_file_base, ...
-        num2str(file_num_01, num_format), '_' ...
+        num2str(file_nums(1), num_format), '_' ...
         num2str(file_nums(k), num_format), file_ext];
     corr_file_path = fullfile(corr_dir, corr_file_name);
      
+   
     % Read the SOFT results .dat file
-    [C] = read_soft_results_file(corr_file_path, band_width_out, is_real);
+    [C, G, B, A] = read_soft_results_file(corr_file_path, band_width_out, is_real);
+   
     
-    % Find max value of the correlation
-    [~, I(k)] = max(C(:));
 end
-
-% Find the Z-rotation angle corresponding to the max value
-g_est = G(I);
-
-% Find the 
-a_est = A(I);
-
-z_rot_est = g_est + a_est;
-
-
 
 
 

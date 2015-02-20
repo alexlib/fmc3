@@ -11,11 +11,6 @@ function write_volume_sph_proj(VOLUME, BAND_WIDTH, FILEPATH)
 
 % Resample the FT magnitude onto the unit sphere.
 [data_sph, az, el] = spherical_projection(VOLUME, BAND_WIDTH);
-drawnow; 
-
-imagesc(data_sph);
-axis image;
-pause(0.1);
 
 % Open a file for writing                     
 fid = fopen(FILEPATH, 'w');
