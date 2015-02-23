@@ -1,5 +1,5 @@
 MATIOROOT = /usr/local/Cellar/libmatio/1.5.2
-PROG = read_mat_data
+PROG = read_mat_spherical_data
 FILE = ~/Desktop/data.mat
 CC = gcc
 EXT = c
@@ -11,3 +11,6 @@ all:
 run:
 	@make all
 	@./$(PROG) $(FILE)
+	
+clean:
+	rm -f $(PROG)
