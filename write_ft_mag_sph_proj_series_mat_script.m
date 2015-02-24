@@ -63,7 +63,7 @@ output_file_path = fullfile(output_dir, output_file_name);
 % Initialize the spherical data
 spherical_data = zeros(4 * band_width^2, num_images, 'double');
 
-for k = 1 : 1 : num_images
+for k = 1 : 1 : 6
     
    % Inform the user
    fprintf(1, 'Image %d of %d\n', k, num_images); 
